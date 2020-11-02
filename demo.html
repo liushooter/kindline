@@ -5,9 +5,6 @@
   <meta charset="utf-8">
   <link rel="icon" href="https://jscdn.com.cn/highcharts/images/favicon.ico">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <style>
-    /* css 代码  */
-  </style>
   <script src="https://code.highcharts.com.cn/jquery/jquery-1.8.3.min.js"></script>
   <script src="https://code.highcharts.com.cn/highstock/highstock.js"></script>
   <script src="https://code.highcharts.com.cn/highcharts/modules/exporting.js"></script>
@@ -30,8 +27,8 @@
             // set up the updating of the chart each second
             var series = this.series[0];
             setInterval(function() {
-              var x = (new Date()).getTime(), // current time
-                y = Math.round(Math.random() * 100);
+              var x = (new Date()).getTime(); // current time
+              var y = Math.round(Math.random() * 100);
               series.addPoint([x, y], true, true);
             }, 1000);
           }
@@ -54,7 +51,7 @@
         selected: 0
       },
       title: {
-        text: 'Live random data'
+        text: '比特币10年'
       },
       tooltip: {
         split: false
@@ -62,19 +59,30 @@
       exporting: {
         enabled: false
       },
+      plotOptions: {
+        line: {
+          dataLabels: {
+            enabled: true
+          },
+          enableMouseTracking: false
+        }
+      },
       series: [{
-        name: '随机数据',
+        name: '价格',
         data: (function() {
           // generate an array of random data
-          var data = [],
-            time = (new Date()).getTime(),
-            i;
-          for (i = -999; i <= 0; i += 1) {
-            data.push([
-              time + i * 1000,
-              Math.round(Math.random() * 100)
-            ]);
-          }
+          var data = [
+            ['2019-11-03T14:54', 9202.8035453],
+            ['2019-11-04T14:54', 9316.92254773],
+            ['2019-11-05T14:54', 9354.58496587],
+            ['2019-11-06T14:54', 9376.49579886],
+            ['2019-11-07T14:54', 9258.35726468],
+            ['2019-11-08T14:54', 8805.69742867],
+            ['2019-11-09T14:54', 8869.25374829],
+            ['2019-11-10T14:54', 8845.27906248],
+            ['2019-11-11T14:54', 8764.25803772],
+            ['2019-11-12T14:54', 8731.59980274]
+          ]
           return data;
         }())
       }]
