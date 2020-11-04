@@ -746,9 +746,9 @@
       "value": ["2020-11-02T14:54:43", "13466.12"]
     }]
 
-    var data = prices.slice(0, 15)
+    var data = prices.slice(0, 15) // 初始化15个数据
 
-    // 基于准备好的dom，初始化echarts实例
+    // 初始化echarts实例
     var myChart = echarts.init(document.getElementById('main'));
 
     var option = {
@@ -798,9 +798,9 @@
 
     myChart.setOption(option);
 
-    var inx = 15;
+    var inx = 15; // 数组坐标
 
-    setInterval(function() {
+    setInterval(function() { // 每隔1秒更新1个数据
       inx += 1;
       data.shift();
       data.push(prices[inx]);
